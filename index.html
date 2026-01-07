@@ -1,6 +1,7 @@
 
         
         
+        
 
 
     <meta charset="UTF-8">
@@ -16,7 +17,7 @@
         <div class="preloader-logo">OB</div>
     </div>
 
-    <header class="main-header pointer-mode-selected" style="font-size: 16px; color: rgb(240, 233, 224); background-color: rgb(184, 30, 164); padding: 24px 45.0139px; margin: 0px;">
+    <header class="main-header">
         <a href="#hero" class="logo">Obsidian Brew</a>
     </header>
 
@@ -35,15 +36,15 @@
             <div class="container">
                 <div class="about-content">
                     <div class="about-text">
-                        <h2 class="section-title">Our Sourcing</h2>
-                        <p class="">At Obsidian Brew, every bean tells a story. We believe in transparency and ethical practices, which is why we partner directly with small-lot farmers from the world's most renowned coffee-growing regions. This direct-trade relationship ensures fair compensation for the growers and unparalleled quality in your cup. We focus on single-origin beans that express the unique terroir of their home, offering a tasting experience that is both honest and profound.</p>
+                        <h2 class="section-title pointer-mode-selected" style="font-size: 55.04px; color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px 0px 48px;">Our Sourcing</h2>
+                        <p>At Obsidian Brew, every bean tells a story. We believe in transparency and ethical practices, which is why we partner directly with small-lot farmers from the world's most renowned coffee-growing regions. This direct-trade relationship ensures fair compensation for the growers and unparalleled quality in your cup. We focus on single-origin beans that express the unique terroir of their home, offering a tasting experience that is both honest and profound.</p>
                     </div>
-                    <div class="about-visual pointer-mode-selected" style="font-size: 16px; color: rgb(172, 12, 12); background-color: rgb(26, 26, 26); padding: 0px; margin: 0px;"></div>
+                    <div class="about-visual"></div>
                 </div>
             </div>
         </section>
 
-        <section id="menu" class="content-section reveal">
+        <section id="menu" class="content-section reveal visible">
             <div class="container">
                 <h2 class="section-title">Our Menu</h2>
                 <div class="menu-tabs-container">
@@ -100,34 +101,74 @@
             </div>
         </section>
         
-        <section id="location" class="content-section reveal">
-            <div class="container">
-                 <h2 class="section-title">Visit Us</h2>
-                 <div class="location-grid">
-                     <div class="map-visual">
-                         <div class="map-pin"></div>
-                     </div>
-                     <div class="location-info">
-                         <h3>Opening Hours</h3>
-                         <ul>
-                            <li>Mon - Fri <span class="time">7am - 6pm</span></li>
-                            <li>Saturday <span class="time">8am - 5pm</span></li>
-                            <li>Sunday <span class="time">8am - 3pm</span></li>
-                         </ul>
-                         <p class="address">123 Onyx Street, Downtown, Metropolis</p>
-                     </div>
-                 </div>
-            </div>
+        <section id="location" class="content-section reveal visible">
+            <div class="container pointer-mode-selected" style="font-size: 16px; color: rgb(240, 233, 224); background-color: rgb(102, 67, 5); padding: 0px; margin: 0px 57.1333px 0px 57.1167px;">Visit Us<br>Opening Hours<br>Mon - Fri<br>7am - 6pm<br>Saturday<br>8am - 5pm<br>Sunday<br>8am - 3pm<br><br>123 Onyx Street, Downtown, Metropolis</div>
         </section>
 
     </main>
 
-    <footer>
-         <p>© 2024 Obsidian Brew. All Rights Reserved.</p>
+    <footer class="pointer-mode-selected" style="font-size: 14.4px; color: rgb(148, 88, 20); background-color: rgba(0, 0, 0, 0); padding: 48px 0px; margin: 0px;">
+         <p class="">© 2024 Obsidian Brew. All Rights Reserved.</p>
     </footer>
 
 
 
+        <script>document.addEventListener('DOMContentLoaded', function() {
+    // --- Preloader --- //
+    const preloader = document.querySelector('.preloader');
+    const body = document.querySelector('body');
+
+    window.addEventListener('load', () => {
+        preloader.classList.add('hidden');
+        body.classList.add('loaded');
+    });
+
+    // --- Menu Tabs --- //
+    const tabsContainer = document.querySelector('.menu-tabs');
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    if (tabsContainer) {
+        tabsContainer.addEventListener('click', (e) => {
+            const clickedTab = e.target.closest('.tab-link');
+            if (!clickedTab) return;
+
+            e.preventDefault();
+            const tabId = clickedTab.dataset.tab;
+
+            // Deactivate all tabs and content
+            tabLinks.forEach(link => link.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Activate clicked tab and corresponding content
+            clickedTab.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        });
+    }
+
+    // --- Intersection Observer for Scroll Animations --- //
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { 
+        root: null, // relative to the viewport
+        threshold: 0.1, // 10% of the item must be visible
+        rootMargin: '0px 0px -50px 0px' // trigger a bit earlier
+    });
+
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
+});</script>
+      
+      
+    
         <script>document.addEventListener('DOMContentLoaded', function() {
     // --- Preloader --- //
     const preloader = document.querySelector('.preloader');
