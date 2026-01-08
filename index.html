@@ -1,19 +1,25 @@
-
-        
-        
-        
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cofee</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Obsidian Brew</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Poppins:wght@300;400;600&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
 
-
-
-    <div class="preloader hidden">
+    <div class="preloader">
         <div class="preloader-logo">OB</div>
     </div>
 
@@ -22,7 +28,7 @@
     </header>
 
     <main>
-        <section id="hero" class="">
+        <section id="hero">
             <div class="hero-content">
                 <h1 class="hero-title">Crafted Silence.</h1>
                 <p class="hero-subtitle">Experience coffee in its purest form.</p>
@@ -32,11 +38,11 @@
             </div>
         </section>
 
-        <section id="about" class="content-section reveal visible">
+        <section id="about" class="content-section reveal">
             <div class="container">
                 <div class="about-content">
                     <div class="about-text">
-                        <h2 class="section-title pointer-mode-selected" style="font-size: 55.04px; color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px 0px 48px;">Our Sourcing</h2>
+                        <h2 class="section-title">Our Sourcing</h2>
                         <p>At Obsidian Brew, every bean tells a story. We believe in transparency and ethical practices, which is why we partner directly with small-lot farmers from the world's most renowned coffee-growing regions. This direct-trade relationship ensures fair compensation for the growers and unparalleled quality in your cup. We focus on single-origin beans that express the unique terroir of their home, offering a tasting experience that is both honest and profound.</p>
                     </div>
                     <div class="about-visual"></div>
@@ -44,7 +50,7 @@
             </div>
         </section>
 
-        <section id="menu" class="content-section reveal visible">
+        <section id="menu" class="content-section reveal">
             <div class="container">
                 <h2 class="section-title">Our Menu</h2>
                 <div class="menu-tabs-container">
@@ -101,313 +107,34 @@
             </div>
         </section>
         
-        <section id="location" class="content-section reveal visible">
-            <div class="container pointer-mode-selected" style="font-size: 16px; color: rgb(240, 233, 224); background-color: rgb(102, 67, 5); padding: 0px; margin: 0px 57.1333px 0px 57.1167px;">Visit Us<br>Opening Hours<br>Mon - Fri<br>7am - 6pm<br>Saturday<br>8am - 5pm<br>Sunday<br>8am - 3pm<br><br>123 Onyx Street, Downtown, Metropolis</div>
+        <section id="location" class="content-section reveal">
+            <div class="container">
+                 <h2 class="section-title">Visit Us</h2>
+                 <div class="location-grid">
+                     <div class="map-visual">
+                         <div class="map-pin"></div>
+                     </div>
+                     <div class="location-info">
+                         <h3>Opening Hours</h3>
+                         <ul>
+                            <li>Mon - Fri <span class="time">7am - 6pm</span></li>
+                            <li>Saturday <span class="time">8am - 5pm</span></li>
+                            <li>Sunday <span class="time">8am - 3pm</span></li>
+                         </ul>
+                         <p class="address">123 Onyx Street, Downtown, Metropolis</p>
+                     </div>
+                 </div>
+            </div>
         </section>
 
     </main>
 
-    <footer class="pointer-mode-selected" style="font-size: 14.4px; color: rgb(148, 88, 20); background-color: rgba(0, 0, 0, 0); padding: 48px 0px; margin: 0px;">
-         <p class="">© 2024 Obsidian Brew. All Rights Reserved.</p>
+    <footer>
+         <p>&copy; 2024 Obsidian Brew. All Rights Reserved.</p>
     </footer>
 
-
-
-        <script>document.addEventListener('DOMContentLoaded', function() {
-    // --- Preloader --- //
-    const preloader = document.querySelector('.preloader');
-    const body = document.querySelector('body');
-
-    window.addEventListener('load', () => {
-        preloader.classList.add('hidden');
-        body.classList.add('loaded');
-    });
-
-    // --- Menu Tabs --- //
-    const tabsContainer = document.querySelector('.menu-tabs');
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    if (tabsContainer) {
-        tabsContainer.addEventListener('click', (e) => {
-            const clickedTab = e.target.closest('.tab-link');
-            if (!clickedTab) return;
-
-            e.preventDefault();
-            const tabId = clickedTab.dataset.tab;
-
-            // Deactivate all tabs and content
-            tabLinks.forEach(link => link.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-
-            // Activate clicked tab and corresponding content
-            clickedTab.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        });
-    }
-
-    // --- Intersection Observer for Scroll Animations --- //
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { 
-        root: null, // relative to the viewport
-        threshold: 0.1, // 10% of the item must be visible
-        rootMargin: '0px 0px -50px 0px' // trigger a bit earlier
-    });
-
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
-    });
-});</script>
-      
-      
-    
-        <script>document.addEventListener('DOMContentLoaded', function() {
-    // --- Preloader --- //
-    const preloader = document.querySelector('.preloader');
-    const body = document.querySelector('body');
-
-    window.addEventListener('load', () => {
-        preloader.classList.add('hidden');
-        body.classList.add('loaded');
-    });
-
-    // --- Menu Tabs --- //
-    const tabsContainer = document.querySelector('.menu-tabs');
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    if (tabsContainer) {
-        tabsContainer.addEventListener('click', (e) => {
-            const clickedTab = e.target.closest('.tab-link');
-            if (!clickedTab) return;
-
-            e.preventDefault();
-            const tabId = clickedTab.dataset.tab;
-
-            // Deactivate all tabs and content
-            tabLinks.forEach(link => link.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-
-            // Activate clicked tab and corresponding content
-            clickedTab.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        });
-    }
-
-    // --- Intersection Observer for Scroll Animations --- //
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { 
-        root: null, // relative to the viewport
-        threshold: 0.1, // 10% of the item must be visible
-        rootMargin: '0px 0px -50px 0px' // trigger a bit earlier
-    });
-
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
-    });
-});</script>
-      
-      
-    
-        <script>document.addEventListener('DOMContentLoaded', function() {
-    // --- Preloader --- //
-    const preloader = document.querySelector('.preloader');
-    const body = document.querySelector('body');
-
-    window.addEventListener('load', () => {
-        preloader.classList.add('hidden');
-        body.classList.add('loaded');
-    });
-
-    // --- Menu Tabs --- //
-    const tabsContainer = document.querySelector('.menu-tabs');
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    if (tabsContainer) {
-        tabsContainer.addEventListener('click', (e) => {
-            const clickedTab = e.target.closest('.tab-link');
-            if (!clickedTab) return;
-
-            e.preventDefault();
-            const tabId = clickedTab.dataset.tab;
-
-            // Deactivate all tabs and content
-            tabLinks.forEach(link => link.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-
-            // Activate clicked tab and corresponding content
-            clickedTab.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        });
-    }
-
-    // --- Intersection Observer for Scroll Animations --- //
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { 
-        root: null, // relative to the viewport
-        threshold: 0.1, // 10% of the item must be visible
-        rootMargin: '0px 0px -50px 0px' // trigger a bit earlier
-    });
-
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
-    });
-});</script>
-      
-      
-    <script id="pointer-mode-script">
-      (function() {
-        let hoveredElement = null;
-        let selectedElement = null;
-
-        function generateSelector(element) {
-          if (element.id) return '#' + element.id;
-          const tagName = element.tagName.toLowerCase();
-          const parent = element.parentElement;
-          if (!parent || parent === document.body) return tagName;
-          const siblings = Array.from(parent.children).filter(c => c.tagName === element.tagName);
-          if (siblings.length === 1) {
-            const parentSelector = generateSelector(parent);
-            return parentSelector + ' > ' + tagName;
-          }
-          const index = siblings.indexOf(element) + 1;
-          return generateSelector(parent) + ' > ' + tagName + ':nth-of-type(' + index + ')';
-        }
-
-        function getElementInfo(el) {
-          const computedStyle = window.getComputedStyle(el);
-          return {
-            tagName: el.tagName,
-            selector: generateSelector(el),
-            textContent: el.innerText || el.textContent || '',
-            href: el.href || el.getAttribute('href') || '',
-            src: el.src || el.getAttribute('src') || '',
-            styles: {
-              fontSize: computedStyle.fontSize,
-              color: computedStyle.color,
-              backgroundColor: computedStyle.backgroundColor,
-              padding: computedStyle.padding,
-              margin: computedStyle.margin
-            }
-          };
-        }
-
-        function handleMouseOver(e) {
-          if (!document.body.classList.contains('pointer-mode-active')) return;
-          e.stopPropagation();
-          
-          if (hoveredElement && hoveredElement !== selectedElement) {
-            hoveredElement.classList.remove('pointer-mode-hover');
-          }
-          
-          hoveredElement = e.target;
-          if (hoveredElement !== selectedElement) {
-            hoveredElement.classList.add('pointer-mode-hover');
-          }
-          
-          window.parent.postMessage({
-            type: 'pointer-mode-hover',
-            selector: generateSelector(hoveredElement)
-          }, '*');
-        }
-
-        function handleMouseOut(e) {
-          if (!document.body.classList.contains('pointer-mode-active')) return;
-          if (hoveredElement && hoveredElement !== selectedElement) {
-            hoveredElement.classList.remove('pointer-mode-hover');
-          }
-        }
-
-        function handleClick(e) {
-          if (!document.body.classList.contains('pointer-mode-active')) return;
-          e.preventDefault();
-          e.stopPropagation();
-          
-          if (selectedElement) {
-            selectedElement.classList.remove('pointer-mode-selected');
-          }
-          
-          selectedElement = e.target;
-          selectedElement.classList.add('pointer-mode-selected');
-          selectedElement.classList.remove('pointer-mode-hover');
-          
-          window.parent.postMessage({
-            type: 'pointer-mode-select',
-            element: getElementInfo(selectedElement)
-          }, '*');
-        }
-
-        // Listen for parent commands
-        window.addEventListener('message', function(e) {
-          if (e.data.type === 'pointer-mode-enable') {
-            document.body.classList.add('pointer-mode-active');
-          } else if (e.data.type === 'pointer-mode-disable') {
-            document.body.classList.remove('pointer-mode-active');
-            if (hoveredElement) hoveredElement.classList.remove('pointer-mode-hover');
-            if (selectedElement) selectedElement.classList.remove('pointer-mode-selected');
-            hoveredElement = null;
-            selectedElement = null;
-          } else if (e.data.type === 'pointer-mode-apply') {
-            if (!selectedElement) return;
-            const changes = e.data.changes;
-            
-            if (changes.textContent !== undefined && selectedElement.innerText !== undefined) {
-              selectedElement.innerText = changes.textContent;
-            }
-            if (changes.href && selectedElement.href !== undefined) {
-              selectedElement.href = changes.href;
-            }
-            if (changes.src && selectedElement.src !== undefined) {
-              selectedElement.src = changes.src;
-            }
-            if (changes.styles) {
-              if (changes.styles.fontSize) selectedElement.style.fontSize = changes.styles.fontSize;
-              if (changes.styles.color) selectedElement.style.color = changes.styles.color;
-              if (changes.styles.backgroundColor) selectedElement.style.backgroundColor = changes.styles.backgroundColor;
-              if (changes.styles.padding) selectedElement.style.padding = changes.styles.padding;
-              if (changes.styles.margin) selectedElement.style.margin = changes.styles.margin;
-            }
-            
-            // Send updated HTML back
-            window.parent.postMessage({
-              type: 'pointer-mode-html-update',
-              html: document.body.innerHTML
-            }, '*');
-          } else if (e.data.type === 'pointer-mode-deselect') {
-            if (selectedElement) {
-              selectedElement.classList.remove('pointer-mode-selected');
-              selectedElement = null;
-            }
-          }
-        });
-
-        document.addEventListener('mouseover', handleMouseOver, true);
-        document.addEventListener('mouseout', handleMouseOut, true);
-        document.addEventListener('click', handleClick, true);
-      })();
-    </script>
+</body>
+</html>
+<script src="./script.js"></script>
+</body>
+</html>
